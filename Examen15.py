@@ -17,7 +17,7 @@ def mostrar_libros():
  # Insertar el código aquí
         
  # Renderizar la página de libros con la libro seleccionado
- return render_template("libros.html", libro=libro_ingresado)
+ return render_template("libros.html")#, libro=libro_ingresado)
 
 
 if __name__ == '__main__':
