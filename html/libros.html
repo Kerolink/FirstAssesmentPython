@@ -1,0 +1,101 @@
+<!--libros.html-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Información de la libro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+</head>
+
+<body>
+    <fieldset>
+        <legend>Información de libros</legend>
+        <div class="form-group row">
+            {% if libro %}
+            <p><strong>Clase:</strong> {{ libro.clase }}</p>
+            <p><strong>Título:</strong> {{ libro.título }}</p>
+            {% if (libro.clase == "Novela") %}
+            <p><strong>Genero:</strong> {{ libro.genero }}</p>
+            {% elif (libro.clase == "Ensayo") %}
+            <p><strong>Tema:</strong> {{ libro.tema }}</p>
+            {% elif (libro.clase == "Poesia") %}
+            <p><strong>Estilo:</strong> {{ libro.estilo }}</p>
+            {% endif %}
+            <p><strong>Descripcion:</strong> {{ libro.descripcion() }}</p>
+            {% else %}
+            <p>La libro seleccionada no fue encontrada en la lista.</p>
+            {% endif %}
+            <form method="get" action="/">
+                <button type="submit" class="btn btn-primary">Mas libros</button>
+            </form>
+        </div>
+    </fieldset>
+</body>
+
+</html>
+
+<!-- start_libros.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Información de libros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+</head>
+
+<body>
+    <form method="post" action="/libros">
+        <legend>Información de libros</legend>
+        <fieldset class="d-grid">
+            <label for="libro">Selecciona la clase de libro:</label>
+            <select id="clase" name="clase" class="col-form-label col-form-label-sm">
+                <option value="Novela">Novela</option>
+                <option value="Ensayo">Ensayo</option>
+                <option value="Poesia">Poesía</option>
+            </select>
+            <label for="titulo" class="col-form-label col-form-label-sm">Título:</label>
+            <input type="text" id="titulo" name="titulo">
+            <label for="autor" class="col-form-label col-form-label-sm">Autor:</label>
+            <input type="text" id="autor" name="autor">
+            <div id="atributos">
+                <label for="genero" class="col-form-label col-form-label-sm">Genero:</label>
+                <input type="text" id="genero" name="genero">
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Revisar</button>
+    </form>
+
+    <script>
+        const libroselect = document.getElementById("clase");
+        const atributosDiv = document.getElementById("atributos");
+
+        function mostrarAtributos() {
+            const clase = libroselect.value;
+            atributosDiv.innerHTML = "";
+
+            if (clase === "Novela") {
+                atributosDiv.innerHTML += `
+            <label for="genero" class="col-form-label col-form-label-sm">Genero:</label>
+            <input type="text" id="genero" name="genero">
+          `;
+            } else if (clase === "Ensayo") {
+                atributosDiv.innerHTML += `
+            <label for="tema" class="col-form-label col-form-label-sm">Tema:</label>
+            <input type="text" id="tema" name="tema">
+          `;
+            } else if (clase === "Poesia") {
+                atributosDiv.innerHTML += `
+            <label for="poesia" class="col-form-label col-form-label-sm">Poesía:</label>
+            <input type="text" id="poesia" name="poesia">
+          `;
+            }
+        }
+        libroselect.addEventListener("change", mostrarAtributos);
+    </script>
+</body>
+
+</html>
