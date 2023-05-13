@@ -4,7 +4,7 @@
 Instrucciones de instalación:
 Clonar el repositorio:
 
-git clone http://github.com/sbenavent/StartPython
+git clone https://github.com/Kerolink/FirstAssesmentPython.git
 Crear y activar el entorno virtual:
 
 Versión Python 3.11.2

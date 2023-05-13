@@ -30,4 +30,3 @@ class Poesia(Libros):
         self.estilo = estilo    
     def descripcion(self):
         return f"{self.titulo} es un libro de poesía escrito por {self.autor} en el estilo {self.estilo}."
-   

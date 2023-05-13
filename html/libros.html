@@ -15,7 +15,7 @@
         <div class="form-group row">
             {% if libro %}
             <p><strong>Clase:</strong> {{ libro.clase }}</p>
-            <p><strong>Título:</strong> {{ libro.título }}</p>
+            <p><strong>Título:</strong> {{ libro.titulo }}</p>
             {% if (libro.clase == "Novela") %}
             <p><strong>Genero:</strong> {{ libro.genero }}</p>
             {% elif (libro.clase == "Ensayo") %}
